@@ -1,3 +1,8 @@
 spring:
   profiles:
     active: dev
+website:
+  url: http://localhost:8080/
+  employee: employee/
+server:
+  port: 8090
