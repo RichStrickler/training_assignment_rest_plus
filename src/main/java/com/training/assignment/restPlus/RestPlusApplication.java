@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 
  * 2) Shift the url to YML ✓
  * 
- * 3) Spring profile
+ * 3) Spring profile ✓
  * 
  * 4) Use proper package structure (controller, model, service, dao, utils, entity, constants etc) ✓
  * 
@@ -27,7 +27,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 10) Change the response of REST calls to class objects instead of String (both server and client)
  * ✓
  * 
- * 11) Use Java to JSON with a complicated structure, use Jackson annotations
+ * 11) Use Java to JSON with a complicated structure, use Jackson annotations ✓
  * 
  * 12) Use ObjectMapper to deserialize
  * 

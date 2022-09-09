@@ -1,6 +1,10 @@
 package com.training.assignment.restPlus.model;
 
-public class Employee {
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"firstName", "lastName", "id", "deptId", "statCd"})
+public class EmployeeBean {
 
   public String firstName;
   public String lastName;
@@ -8,6 +12,8 @@ public class Employee {
   public int deptId;
   public int statCd;
 
+
+  @JsonGetter("firstName")
   public String getFirstName() {
     return firstName;
   }
@@ -16,6 +22,7 @@ public class Employee {
     this.firstName = firstName;
   }
 
+  @JsonGetter("lastName")
   public String getLastName() {
     return lastName;
   }
@@ -24,6 +31,7 @@ public class Employee {
     this.lastName = lastName;
   }
 
+  @JsonGetter("id")
   public int getId() {
     return id;
   }
@@ -32,6 +40,7 @@ public class Employee {
     this.id = id;
   }
 
+  @JsonGetter("deptId")
   public int getDeptId() {
     return deptId;
   }
@@ -40,6 +49,7 @@ public class Employee {
     this.deptId = deptId;
   }
 
+  @JsonGetter("statCd")
   public int getStatCd() {
     return statCd;
   }
@@ -47,7 +57,5 @@ public class Employee {
   public void setStatCd(int statCd) {
     this.statCd = statCd;
   }
-
-
 
 }

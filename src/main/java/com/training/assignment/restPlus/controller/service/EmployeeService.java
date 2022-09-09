@@ -1,6 +1,7 @@
 package com.training.assignment.restPlus.controller.service;
 
 import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -11,7 +12,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.training.assignment.restPlus.model.Employee;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.training.assignment.restPlus.model.EmployeeBean;
 
 @Service
 public class EmployeeService {
@@ -23,6 +25,9 @@ public class EmployeeService {
   @Value("${website.employee}")
   String employeeExtension;
 
+  ObjectMapper objectMapper = new ObjectMapper();
+  List<EmployeeBean> searchHistory;
+
 
   @Autowired
   private EmployeeService(@Lazy RestTemplateBuilder restTemplateBuilder) {
@@ -30,20 +35,21 @@ public class EmployeeService {
 
   }
 
-  public Employee getEmployee(int employeeId) {
+  public EmployeeBean getEmployee(int employeeId) {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     HttpEntity<String> entity = new HttpEntity<>(headers);
-    return this.restTemplate
-        .exchange(url + employeeExtension + employeeId, HttpMethod.GET, entity, Employee.class)
+    EmployeeBean employeeBean = this.restTemplate
+        .exchange(url + employeeExtension + employeeId, HttpMethod.GET, entity, EmployeeBean.class)
         .getBody();
+    return employeeBean;
   }
 
-  public void postEmployee(Employee teleData) {
-    this.restTemplate.postForObject(url + employeeExtension, teleData, Employee.class);
+  public void postEmployee(EmployeeBean teleData) {
+    this.restTemplate.postForObject(url + employeeExtension, teleData, EmployeeBean.class);
   }
 
-  public void putEmployee(Employee teleData) {
+  public void putEmployee(EmployeeBean teleData) {
     this.restTemplate.put(url + employeeExtension, teleData);
   }
 

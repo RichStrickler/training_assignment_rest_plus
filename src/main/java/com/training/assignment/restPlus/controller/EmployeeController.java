@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.training.assignment.restPlus.controller.service.EmployeeService;
-import com.training.assignment.restPlus.model.Employee;
+import com.training.assignment.restPlus.model.EmployeeBean;
 
 @RestController
 public class EmployeeController {
@@ -18,9 +18,11 @@ public class EmployeeController {
   @Autowired
   EmployeeService employeeService;
 
+  String firstname;
+
   @PostMapping("/employee")
   @ResponseBody
-  public void postEmployee(@RequestBody Employee teleData) {
+  public void postEmployee(@RequestBody EmployeeBean teleData) {
     employeeService.postEmployee(teleData);
 
 
@@ -28,10 +30,11 @@ public class EmployeeController {
 
   @GetMapping("/employee/{id}")
   @ResponseBody
-  public Employee getEmployee(@PathVariable("id") int employeeId) {
+  public EmployeeBean getEmployee(@PathVariable("id") int employeeId) {
     return employeeService.getEmployee(employeeId);
 
   }
+
 
   @DeleteMapping("/employee/{id}")
   @ResponseBody
@@ -42,7 +45,7 @@ public class EmployeeController {
 
   @PutMapping("/employee")
   @ResponseBody
-  public void putEmployee(@RequestBody Employee teleData) {
+  public void putEmployee(@RequestBody EmployeeBean teleData) {
     employeeService.postEmployee(teleData);
 
   }
