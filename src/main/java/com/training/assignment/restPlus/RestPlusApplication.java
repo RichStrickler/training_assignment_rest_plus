@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 
  * 5) Use the layered architecture - controller/service/dao ✓
  * 
- * 6) implement GET, POST, PUT and DELETE
+ * 6) implement GET, POST, PUT and DELETE ✓
  * 
  * 7) Make sure to have .gitignore file ✓
  * 
