@@ -30,16 +30,25 @@ public class EmployeeService {
 
   }
 
-  public String getEmployee(int employeeId) {
+  public Employee getEmployee(int employeeId) {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     HttpEntity<String> entity = new HttpEntity<>(headers);
     return this.restTemplate
-        .exchange(url + employeeExtension + employeeId, HttpMethod.GET, entity, String.class)
+        .exchange(url + employeeExtension + employeeId, HttpMethod.GET, entity, Employee.class)
         .getBody();
   }
 
   public void postEmployee(Employee teleData) {
     this.restTemplate.postForObject(url + employeeExtension, teleData, Employee.class);
   }
+
+  public void putEmployee(Employee teleData) {
+    this.restTemplate.put(url + employeeExtension, teleData);
+  }
+
+  public void deleteEmployee(int employeeId) {
+    this.restTemplate.delete(url + employeeExtension + employeeId);
+  }
+
 }
